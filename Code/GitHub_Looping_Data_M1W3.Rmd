@@ -24,12 +24,12 @@ library(usethis)
 
 #Github setup (run in console)
 ```{r}
-credentials::git_credential_ask()
-usethis::git_sitrep()
-usethis::create_github_token() # create Personal Access Token
-gitcreds::gitcreds_set() # prompt to insert PAT
-usethis::use_git()#track current project (can also use Tools > Project Options … > Git/SVN, and set to Git)
-# or run  git init in terminal 
+#credentials::git_credential_ask()
+#usethis::git_sitrep()
+#usethis::create_github_token() ## create Personal Access Token
+#gitcreds::gitcreds_set() ## prompt to insert PAT
+#usethis::use_git() ##track current project (can also use Tools > Project Options … > Git/SVN, and set to Git)
+## or run  git init in terminal 
 
 ##Enter into terminal if using USB
 #git config --global --add safe.directory "E:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code"  
@@ -37,8 +37,10 @@ usethis::use_git()#track current project (can also use Tools > Project Options �
 #usethis::git_sitrep()
 ```
 
+# Workflow for github:
+## Edit → Save → Stage → Commit → Pull → Push
 ```{r}
-usethis::use_github() # Have github start tracking files
+#usethis::use_github() # Have github start tracking files
 ```
 
 
