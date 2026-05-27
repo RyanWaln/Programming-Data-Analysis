@@ -7,13 +7,9 @@ output: html_document
 Workspace: D:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code/Basic_Code_M1W1.Rmd
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 # download and install then comment out so it doesn't run again
 ```{r}
-#install.packages("tidyverse") 
+install.packages("tidyverse") 
 #install.packages("redlistr") 
 #install.packages("terra") 
 ```

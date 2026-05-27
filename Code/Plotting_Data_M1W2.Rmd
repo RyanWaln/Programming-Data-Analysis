@@ -27,7 +27,8 @@ Ctrl + Shift + Enter #to run whole chunk
 
 ```{r library}
 library("tidyverse") 
-library("knitr")
+library("knitr") 
+#when kniting: more # = smaller text on printed documents
 ```
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
