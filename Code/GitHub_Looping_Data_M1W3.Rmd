@@ -38,10 +38,10 @@ usethis::git_sitrep()
 
 ##track current project locally (can also use Tools > Project Options … > Git/SVN, and set to Git)
 ## or run  git init in terminal
-#usethis::use_git() 
+usethis::use_git() 
 
 ##Enter into terminal if using USB
-git config --global --add safe.directory "D:/Tri 2 2026/Techniques in Marine Science 1/Programming-Data-Analysis/"
+git config --global --add safe.directory "D:/Tri 2 2026/Techniques in Marine Science 1/Programming-Data-Analysis"
 
 
 
@@ -52,7 +52,7 @@ usethis::git_sitrep()
 # Workflow for github:
 ## Edit → Save → Stage → Commit → Pull → Push
 ```{r}
-#usethis::use_github() # Have github start tracking files
+usethis::use_github() # Have github start tracking files
 ```
 
 
