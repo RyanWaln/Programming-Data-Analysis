@@ -25,10 +25,10 @@ library(usethis)
 # Github setup (run in console)
 ```{r}
 ##Get git credentials
-#credentials::git_credential_ask()  
+credentials::git_credential_ask()  
 
 ## see Git status
-#usethis::git_sitrep()
+usethis::git_sitrep()
 
 ## create Personal Access Token
 #usethis::create_github_token() 
@@ -41,10 +41,12 @@ library(usethis)
 #usethis::use_git() 
 
 ##Enter into terminal if using USB
-#git config --global --add safe.directory "E:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code"  
+git config --global --add safe.directory "D:/Tri 2 2026/Techniques in Marine Science 1/Programming-Data-Analysis/"
+
+
 
 ##Then restart R and run 
-#usethis::git_sitrep() 
+usethis::git_sitrep() 
 ```
 
 # Workflow for github:
