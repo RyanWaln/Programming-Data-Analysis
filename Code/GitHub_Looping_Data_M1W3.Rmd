@@ -4,7 +4,7 @@ title: "Data_ Looping_Module01_Workshop03"
 author: "Ryan Waln"
 date: "2026-05-21"
 output: html_document
-Workspace: D:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code/Looping_Data_M1W3.Rmd
+Workspace: E:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code/GitHub_Looping_Data_M1W3.Rmd
 ---
 ```{r install packages}
 #install.packages("tidyverse") 
