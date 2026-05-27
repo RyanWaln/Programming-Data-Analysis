@@ -31,11 +31,14 @@ gitcreds::gitcreds_set() # prompt to insert PAT
 usethis::use_git()#track current project (can also use Tools > Project Options … > Git/SVN, and set to Git)
 # or run  git init in terminal 
 
+##Enter into terminal if using USB
+#git config --global --add safe.directory "E:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code"  
+##Then restart R and run 
+#usethis::git_sitrep()
+```
 
-#Enter into terminal if using USB
-git config --global --add safe.directory "E:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code"  
-#Then restart R and run 
-usethis::git_sitrep()
+```{r}
+usethis::use_github() # Have github start tracking files
 ```
 
 
