@@ -37,6 +37,8 @@ usethis::use_git()#track current project (can also use Tools > Project Options �
 #usethis::git_sitrep()
 ```
 
+# Workflow for github:
+## Edit → Save → Stage → Commit → Pull → Push
 ```{r}
 usethis::use_github() # Have github start tracking files
 ```
