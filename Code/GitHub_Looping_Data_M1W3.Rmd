@@ -22,19 +22,29 @@ library("knitr")
 library(usethis)
 ```
 
-#Github setup (run in console)
+# Github setup (run in console)
 ```{r}
-#credentials::git_credential_ask()
+##Get git credentials
+#credentials::git_credential_ask()  
+
+## see Git status
 #usethis::git_sitrep()
-#usethis::create_github_token() ## create Personal Access Token
-#gitcreds::gitcreds_set() ## prompt to insert PAT
-#usethis::use_git() ##track current project (can also use Tools > Project Options … > Git/SVN, and set to Git)
-## or run  git init in terminal 
+
+## create Personal Access Token
+#usethis::create_github_token() 
+
+## prompt to insert PAT
+#gitcreds::gitcreds_set() 
+
+##track current project locally (can also use Tools > Project Options … > Git/SVN, and set to Git)
+## or run  git init in terminal
+#usethis::use_git() 
 
 ##Enter into terminal if using USB
 #git config --global --add safe.directory "E:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code"  
+
 ##Then restart R and run 
-#usethis::git_sitrep()
+#usethis::git_sitrep() 
 ```
 
 # Workflow for github:
@@ -158,7 +168,7 @@ if (x == 1) {
 x # what is x now?
 ```
 
-# ifelse staments: used to sort data, such as if a conditon is not met start a second set of commands.
+## ifelse staments: used to sort data, such as if a conditon is not met start a second set of commands.
 
 if (animal_data_received) {
 	# 1. save statement in log file that the animal has been updated
