@@ -43,7 +43,7 @@ usethis::git_sitrep()
 usethis::use_git() 
 
 ##Enter into terminal if using USB
-#git config --global --add safe.directory "D:/Tri 2 2026/Techniques in Marine Science 1/Programming-Data-Analysis"
+#git config --global --add safe.directory "E:/Tri 2 2026/Techniques in Marine Science 1/Programming-Data-Analysis"
 
 
 

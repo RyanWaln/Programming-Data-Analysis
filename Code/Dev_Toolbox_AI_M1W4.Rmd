@@ -20,15 +20,13 @@ output: html_document
 ```{r library}
 library("knitr")
 library(usethis)
-library("chattr")
-library("ellmer")
 ```
 
 ## Test git copilot
 ```{r}
 # Load tidyverse and palmerpenguins libraries 
 library("tidyverse")
-#library("palmerpenguins")
+library("palmerpenguins")
 ```
 
 ```{r}
@@ -65,7 +63,7 @@ ggplot(penguins, aes(x = island, y = flipper_length_mm, color = species)) +
 ##run in console
 usethis::edit_r_environ()
 ##Enter into new window
-GEMINI_API_KEY="your-long-api-key-here"
+GEMINI_API_KEY=your_actual_key_here
 ##Restart R session for changes to take effect
 
 ##Ensure R uses prefered model each session
@@ -75,11 +73,25 @@ options(.chattr_chat = ellmer::chat_google_gemini())
 ##Restart R session for changes to take effect
 ```
 
-# #Set up chat
+## Check API Key is Recognized
 ```{r}
-my_chat <- ellmer::chat_google_gemini()
-chattr_use(my_chat)
+Sys.getenv("GEMINI_API_KEY")
+```
+
+## Set up chat
+```{r}
+library("chattr")
+library("ellmer")
 library(ggplot2)
+my_chat <- ellmer::chat_google_gemini(model = "gemini-2.5-flash")
+chattr_use(my_chat)
+chattr::chattr("say hello")Hello!
+  
+```
+
+## Start a Chat
+```{r}
+chattr_app()
 #Execute Key shortcut: Ctrl + Alt + c
 ```
 
