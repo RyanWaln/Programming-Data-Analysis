@@ -10,6 +10,7 @@ output: html_document
 ```{r}
 install.packages("ellmer")
 install.packages("chattr")
+#install.packages("palmerpenguins")
 ```
 ## PINNED Link chattr AI to Google Gemini LLM
 ```{r}
@@ -20,13 +21,51 @@ usethis::edit_r_environ()
 
 ```
 
-
-
 ```{r library}
-library("tidyverse") 
 library("knitr")
 library(usethis)
+library("chattr")
+library("ellmer")
 ```
+
+
+#Test git copilot
+```{r}
+# Load tidyverse and palmerpenguins libraries 
+#library("tidyverse")
+#library("palmerpenguins")
+```
+
+```{r}
+# Create a ggplot scatter plot using the penguins dataset. 
+# Plot bill_length_mm on the x-axis and bill_depth_mm on the y-axis.
+# Color points by species and use geom_point with size 3.
+# Add a minimal theme and clean labels.   
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
+  geom_point(size = 3) +
+  theme_minimal() +
+  labs(title = "Penguin Bill Dimensions",
+       x = "Bill Length (mm)",
+       y = "Bill Depth (mm)",
+       color = "Species")
+
+```
+```{r}
+# Create boxplot using penguins dataset 
+# Plot flipper_length_mm across different islands
+# Color by species and use geom_point with size 3.
+# Add a minimal theme and clean labels.  
+ggplot(penguins, aes(x = island, y = flipper_length_mm, color = species)) +
+  geom_boxplot() +
+  geom_point(position = position_jitter(width = 0.2), size = 3) +
+  theme_minimal() +
+  labs(title = "Penguin Flipper Length by Island",
+       x = "Island",
+       y = "Flipper Length (mm)",
+       color = "Species")
+```
+
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Looping
