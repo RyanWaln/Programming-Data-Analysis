@@ -10,7 +10,7 @@ output: html_document
 # Setting Up AI assistants
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#Install chattr AI and other packages
+## Install chattr AI and other packages
 ```{r}
 #install.packages("ellmer")
 #install.packages("chattr")
@@ -24,7 +24,7 @@ library("chattr")
 library("ellmer")
 ```
 
-#Test git copilot
+## Test git copilot
 ```{r}
 # Load tidyverse and palmerpenguins libraries 
 library("tidyverse")
@@ -60,7 +60,7 @@ ggplot(penguins, aes(x = island, y = flipper_length_mm, color = species)) +
        color = "Species")
 ```
 
-# Link chattr AI to Google Gemini LLM
+## Link chattr AI to Google Gemini LLM
 ```{r}
 ##run in console
 usethis::edit_r_environ()
@@ -75,7 +75,7 @@ options(.chattr_chat = ellmer::chat_google_gemini())
 ##Restart R session for changes to take effect
 ```
 
-#Set up chat
+# #Set up chat
 ```{r}
 my_chat <- ellmer::chat_google_gemini()
 chattr_use(my_chat)
@@ -83,7 +83,7 @@ library(ggplot2)
 #Execute Key shortcut: Ctrl + Alt + c
 ```
 
-#Test chattr AI with ggplot2 prompt: "Show me how to load the built-in iris dataset and use ggplot2 to build a scatter plot of Sepal.Length versus Sepal.Width colored by Species."
+## Test chattr AI with ggplot2 prompt: "Show me how to load the built-in iris dataset and use ggplot2 to build a scatter plot of Sepal.Length versus Sepal.Width colored by Species."
 ```{r}
 data(iris)
 
@@ -170,7 +170,7 @@ if (sst > 29.5) {
 
 ```
 
-#if_else()
+# if_else()
 ## The if_else(condition, true_output, false_output) function evaluates an entire column item-by-item:
 ```{r}
 # Sample coral data
@@ -256,14 +256,14 @@ for (i in c("My", "second", "for", "loop")) {
 
 ```
 
-# Classic loop anatomy
+## Classic loop anatomy
 ```{r}
 for (year in 2020:2024) {
   print(paste("Processing climate data for year:", year))
 }
 ```
 
-# Loop across index sequences
+## Loop across index sequences
 ```{r}
 
 transect_lengths <- c(50, 100, 25, 75)
@@ -345,7 +345,7 @@ for (i in c(1, 2, 3, 4, 5)) {
 ## map_df(): applies a function to each element of a list or vector and returns a data frame
 
 
-#Standard for Loop to change values on list with sqrt function vs...
+## Standard for Loop to change values on list with sqrt function vs...
 ```{r}
 site_areas <- c(144, 400, 625)
 results <- numeric(length(site_areas)) # Must build an empty container first
@@ -356,7 +356,7 @@ for(i in seq_along(site_areas)) {
 results
 ```
 
-#...purrr equivalent
+## ...purrr equivalent
 ```{r}
 library(purrr)
 # Map directly and define your expected output type explicitly
@@ -364,7 +364,7 @@ mapped_results <- map_dbl(site_areas, sqrt)
 mapped_results
 ```
 
-# Combine purrr pipelines inside data frames to split analysis across separate groups
+## Combine purrr pipelines inside data frames to split analysis across separate groups
 ```{r}
 # typical summary
 summary(iris) 
@@ -376,7 +376,7 @@ iris %>%
 
 ```
 
-# Using Chattr to compare methods when calculating means for fish count data
+## Using Chattr to compare methods when calculating means for fish count data
 ```{r}
 fish_counts <- list(
   river_a = c(12, 15, 10, 18, 13),
@@ -448,7 +448,7 @@ celsius_to_fahrenheit(20)
 celsius_to_fahrenheit(40)
 ```
 
-# Temp conversion w/ saftey stop for absolute zero
+## Temp conversion w/ saftey stop for absolute zero
 ```{r}
 convert_temp_c_to_f <- function(temp_C) {
   if (temp_C < -273.15) {
@@ -462,7 +462,7 @@ convert_temp_c_to_f(25)
 #convert_temp_c_to_f(-300) # Triggers the safety check and stops execution with an error message
 ```
 
-#Advanced problems
+## Advanced problems
 ```{r}
 # Create custom function named clean_and_classify_survey that accepts a data frame and a column name threshold parameter as inputs
 # Safely check if the specified column name exists within the passed data frame; if it does not, trigger a user-friendly error message using stop()
