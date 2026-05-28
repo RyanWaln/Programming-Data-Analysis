@@ -12,8 +12,8 @@ output: html_document
 
 #Install chattr AI and other packages
 ```{r}
-install.packages("ellmer")
-install.packages("chattr")
+#install.packages("ellmer")
+#install.packages("chattr")
 #install.packages("palmerpenguins")
 ```
 
@@ -363,13 +363,19 @@ library(purrr)
 mapped_results <- map_dbl(site_areas, sqrt)
 mapped_results
 ```
+
+# Combine purrr pipelines inside data frames to split analysis across separate groups
 ```{r}
-# Iterate a summary function over split lists of data
+# typical summary
+summary(iris) 
+
+# Use pipeline to split data into species
 iris %>%  
-  split(.$Species) %>%  # 
-  map(~summary(.x)) # 
+  split(.$Species) %>%  # Splits the iris data set into a list of data frames based on the Species column (insert iris into dot)
+  map(~summary(.x)) # Finds summary of species
 
 ```
+
 # Using Chattr to compare methods when calculating means for fish count data
 ```{r}
 fish_counts <- list(
@@ -399,19 +405,19 @@ print(mean_counts_purrr)
 
 ##  Good practice to only use arguments passed directly into them, rather than accidentally grabbing random background objects in your global R environment
 ```{r}
-# Function Definition
+# Define Function
 calculate_coral_mortality <- function(initial_count, surviving_count) {
   
   # Logic safety switch using our conditional tools!
   if (initial_count <= 0) {
     stop("Initial count must be greater than zero.")
   }
-  
+  # Calculate mortality rate
   mortality_rate <- (initial_count - surviving_count) / initial_count
   return(mortality_rate)
 }
 
-# Utilizing your custom function
+# Test custom function
 calculate_coral_mortality(initial_count = 120, surviving_count = 84)
 ```
 ## Other Examples include converting temperature units: temp_C <- (temp_F - 32) * 5 / 9
@@ -437,16 +443,13 @@ celsius_to_fahrenheit <- function(temp_C) {
   return(temp_F)                     
 }
 
-
 celsius_to_fahrenheit(0)
 celsius_to_fahrenheit(20)
 celsius_to_fahrenheit(40)
 ```
 
-
+# Temp conversion w/ saftey stop for absolute zero
 ```{r}
-# temp conversion function with conditional safety check using an if statement that halts execution via stop() if the entered value is below absolute zero (-273.15 degrees Celsius)
-
 convert_temp_c_to_f <- function(temp_C) {
   if (temp_C < -273.15) {
     stop("Temperature cannot be below absolute zero (-273.15°C).")
@@ -458,6 +461,8 @@ convert_temp_c_to_f <- function(temp_C) {
 convert_temp_c_to_f(25)
 #convert_temp_c_to_f(-300) # Triggers the safety check and stops execution with an error message
 ```
+
+#Advanced problems
 ```{r}
 # Create custom function named clean_and_classify_survey that accepts a data frame and a column name threshold parameter as inputs
 # Safely check if the specified column name exists within the passed data frame; if it does not, trigger a user-friendly error message using stop()
@@ -487,5 +492,18 @@ test_data <- tibble(
 )
 result <- clean_and_classify_survey(test_data, "measurement", threshold = 5)
 print(result)
+```
+
+```{r}
+#Given a vector of raw survey counts counts <- c(15, 24, 8, 42) and a vector of species-specific scaling factors factors <- c(1.2, 0.8, 2.5, 1.1), write a mapping statement that iterates across both vectors simultaneously to return a single vector of scaled abundance values. Do not use a manual index loop.
+
+library(purrr)
+
+counts <- c(15, 24, 8, 42)
+factors <- c(1.2, 0.8, 2.5, 1.1)
+
+scaled_abundance <- map2_dbl(counts, factors, ~ .x * .y)
+print(scaled_abundance)
+
 ```
 
