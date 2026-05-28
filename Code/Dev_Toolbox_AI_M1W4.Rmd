@@ -86,7 +86,6 @@ library(ggplot2)
 my_chat <- ellmer::chat_google_gemini(model = "gemini-2.5-flash")
 chattr_use(my_chat)
 chattr::chattr("say hello")Hello!
-  
 ```
 
 ## Start a Chat
