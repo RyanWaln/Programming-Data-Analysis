@@ -1,18 +1,30 @@
 ---
 # MB5370: Introduction to Programming
-title: "Data_ Looping_Module01_Workshop03"
+title: "Workshop 3 Module 1"
 author: "Ryan Waln"
 date: "2026-05-26"
 output: html_document
 ---
-```{r install packages}
-#install.packages("tidyverse") 
-#install.packages("knitr")
-#install.packages("usethis")
+## Introduction
+
+This file covers how to set up, enable, and troubleshoot Github
+
+```{r housekeeping, message=FALSE, warning=FALSE, include=FALSE}
+# R Setup & housekeeping
+knitr::opts_chunk$set(
+	echo = FALSE,
+	include = TRUE,
+	message = FALSE,
+	warning = FALSE)
+
+rm(list=ls())
+objects()
 ```
 
-```{r remove packages}
-#remove.packages()
+```{r install packages}
+# install.packages("tidyverse") 
+# install.packages("knitr")
+# install.packages("usethis")
 ```
 
 ```{r library}
@@ -26,36 +38,53 @@ library(usethis)
 
 ## Github setup (run in console)
 ```{r}
-##Get git credentials
+# Get git credentials
 credentials::git_credential_ask()  
 
-## see Git status
+# see Git status
 usethis::git_sitrep()
 
-## create Personal Access Token
-#usethis::create_github_token() 
-
-## prompt to insert PAT
-#gitcreds::gitcreds_set() 
-
-##track current project locally (can also use Tools > Project Options … > Git/SVN, and set to Git)
-## or run  git init in terminal
-usethis::use_git() 
-
-##Enter into terminal if using USB
-#git config --global --add safe.directory "E:/Tri 2 2026/Techniques in Marine Science 1/Programming-Data-Analysis"
-
-
-
-##Then restart R and run 
-usethis::git_sitrep() 
+# force usb to be recognized as safe directory by opening up .gitconfig file
+usethis::edit_git_config()
 ```
 
-# Workflow for github:
-## Edit → Save → Stage → Commit → Pull → Push
+## Ensure .gitconfig file has these lines of code:
+
+[user]
+	email = ryan.waln@aol.com
+	name = Ryan Waln
+[safe]
+	directory = E:/*
+	directory = D:/*
 
 ```{r}
-usethis::use_github() # Have github start tracking files
+# Then restart R and run 
+usethis::git_sitrep() 
+
+# Additional troubleshooting below
+
+# set up credentials if git failed to load them
+usethis::use_git_config(
+  user.name = "Ryan Waln",
+  user.email = "ryan.waln@aol.com")
+
+# create Personal Access Token
+usethis::create_github_token() 
+
+# prompt to insert PAT
+gitcreds::gitcreds_set() 
+
+```
+
+## Workflow for github:
+### Edit → Save → Stage → Commit → Pull → Push
+
+```{r}
+#track current project locally (can also use Tools > Project Options … > Git/SVN, and set to Git)
+usethis::use_git() 
+
+# Have github start tracking files
+usethis::use_github() 
 ```
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------

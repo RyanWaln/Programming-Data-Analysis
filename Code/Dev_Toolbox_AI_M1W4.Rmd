@@ -1,16 +1,37 @@
 ---
 # MB5370: Introduction to Programming
-title: "Dev_Toolbox_AI"
+title: "Workshop 4 Module 1"
 author: "Ryan Waln"
 date: "2026-05-27"
 output: html_document
 ---
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Setting Up AI assistants
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Introduction
 
-## Install chattr AI and other packages
+This file covers:
+- How to set up AI assistants like GitCopilot and chattr AI to assist with coding
+- Sorting data with conditional statements 
+- How to set up classic loops
+- How to set up Purrr loops
+- How to use functions
+
+```{r housekeeping, message=FALSE, warning=FALSE, include=FALSE}
+# R Setup & housekeeping
+knitr::opts_chunk$set(
+	echo = FALSE,
+	include = TRUE,
+	message = FALSE,
+	warning = FALSE)
+
+rm(list=ls())
+objects()
+```
+
+## Setting Up AI assistants
+
+#### Set up GitCopilot in Tools > Global Options > Assistant
+
+#### Install chattr AI and other packages
 ```{r}
 #install.packages("ellmer")
 #install.packages("chattr")
@@ -22,7 +43,7 @@ library("knitr")
 library(usethis)
 ```
 
-## Test git copilot
+#### Test git copilot
 ```{r}
 # Load tidyverse and palmerpenguins libraries 
 library("tidyverse")
@@ -58,7 +79,7 @@ ggplot(penguins, aes(x = island, y = flipper_length_mm, color = species)) +
        color = "Species")
 ```
 
-## Link chattr AI to Google Gemini LLM
+#### Link chattr AI to Google Gemini LLM
 ```{r}
 ##run in console
 usethis::edit_r_environ()
@@ -73,7 +94,7 @@ options(.chattr_chat = ellmer::chat_google_gemini())
 ##Restart R session for changes to take effect
 ```
 
-## Check API Key is Recognized
+#### Check API Key is Recognized
 ```{r}
 Sys.getenv("GEMINI_API_KEY")
 ```
@@ -94,7 +115,7 @@ chattr_app()
 #Execute Key shortcut: Ctrl + Alt + c
 ```
 
-## Test chattr AI with ggplot2 prompt: "Show me how to load the built-in iris dataset and use ggplot2 to build a scatter plot of Sepal.Length versus Sepal.Width colored by Species."
+#### Test chattr AI with ggplot2 prompt: "Show me how to load the built-in iris dataset and use ggplot2 to build a scatter plot of Sepal.Length versus Sepal.Width colored by Species."
 ```{r}
 data(iris)
 
@@ -102,13 +123,13 @@ ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
   geom_point()
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Sorting Data
------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## ifthen statments:if a condition is meet, do this command.
+## Sorting Data
 
-## Change object if it equates to something
+
+### ifthen statments:if a condition is meet, do this command.
+
+#### Change object if it equates to something
 ```{r}
 x <- 1
 x # what is x?
@@ -125,19 +146,19 @@ if (x == 1) {
 x # what is x now?
 ```
 
-## ifelse staments: used to sort data, such as if a conditon is not met start a second set of commands.
+### ifelse staments: used to sort data, such as if a conditon is not met start a second set of commands.
 
-## Example:
+#### Example:
 if (animal_data_received) {
-	# 1. save statement in log file that the animal has been updated
+	1. save statement in log file that the animal has been updated
 } else {
-	# 1. save statement saying no data received
+	1. save statement saying no data received
 }
 
 
-## elseif statements: allows additional conditional commands between the if and else
+### elseif statements: allows additional conditional commands between the if and else
 
-## Example of ifelse code:
+#### Example of ifelse code:
 ```{r}
 name <- "Nick"
 if (name == "Nick"){
@@ -168,7 +189,7 @@ print (paste(name, last.name))
 
 ```
 
-# Simple Example: Checking Sea Surface Temperature (SST)
+#### Simple Example: Checking Sea Surface Temperature (SST)
 ```{r}
 #() set the logical condition and curly braces {} used for the action if that condition is true
 sst <- 30.2
@@ -181,8 +202,8 @@ if (sst > 29.5) {
 
 ```
 
-# if_else()
-## The if_else(condition, true_output, false_output) function evaluates an entire column item-by-item:
+### if_else()
+#### The if_else(condition, true_output, false_output) function evaluates an entire column item-by-item:
 ```{r}
 # Sample coral data
 coral_monitoring <- tibble(
@@ -202,8 +223,8 @@ coral_monitoring
 ```
 
 
-# case_when()
-## When you have more than two possibilities, stacking multiple if-else blocks becomes unreadable. case_when() is better and uses formula tildes (~):
+### case_when()
+#### When you have more than two possibilities, stacking multiple if-else blocks becomes unreadable. case_when() is better and uses formula tildes (~):
 ```{r}
 coral_monitoring <- coral_monitoring %>% 
   mutate(reef_category = case_when(
@@ -214,7 +235,6 @@ coral_monitoring <- coral_monitoring %>%
   ))
 
 ```
-
 
 ```{r}
 # create a tibble named marine_stations containing a column for salinity with values 35, 28, 32, and 12
@@ -233,11 +253,11 @@ marine_stations <- marine_stations %>%
 marine_stations
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Classic Looping
------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Create a new object for every loop run with a name value
+## Classic Looping
+
+
+#### Create a new object for every loop run with a name value
 ```{r}
 for (value in c("My", "first", "for", "loop")) {
   print("one run")
@@ -245,14 +265,14 @@ for (value in c("My", "first", "for", "loop")) {
 
 ```
 
-## Print out values for each loop instead of a given label
+#### Print out values for each loop instead of a given label
 ```{r}
 for (value in c("My", "second", "for", "loop")) {
   print(value)
 }
 ```
 
-## Can use any word you want with print() 
+#### Can use any word you want with print() 
 ```{r}
 for (word in c("My", "second", "for", "loop")) {
   print(word)
@@ -267,14 +287,14 @@ for (i in c("My", "second", "for", "loop")) {
 
 ```
 
-## Classic loop anatomy
+#### Classic loop anatomy
 ```{r}
 for (year in 2020:2024) {
   print(paste("Processing climate data for year:", year))
 }
 ```
 
-## Loop across index sequences
+#### Loop across index sequences
 ```{r}
 
 transect_lengths <- c(50, 100, 25, 75)
@@ -283,7 +303,8 @@ for (i in seq_along(transect_lengths)) {
   print(paste("Transect number", i, "measures", transect_lengths[i], "metres."))
 }
 ```
-## Make your own for loop: A list of your top 3 favourite animals
+
+#### Make your own for loop: A list of your top 3 favourite animals
 ```{r}
 #Make a for loop that lists my top 3 favorite animals using the print() function and paste() to combine text and the loop value
 
@@ -296,14 +317,14 @@ for (i in seq_along(My_number)) {
 
 ```
 
-## Create list to be looped and compactly display it
+#### Create list to be looped and compactly display it
 ```{r}
 my_list <- 1:50 
 print (my_list)
 str(my_list)
 ```
 
-## Run the loop
+#### Run the loop
 ```{r}
 # make a for loop (i is typically used)
 for(i in my_list) {                              # Head of for-loop
@@ -316,7 +337,7 @@ print ("Program complete!")
 
 ```
 
-## Add a number to every item in the list being looped
+#### Add a number to every item in the list being looped
 ```{r}
 add_me <- 500     #Establish added value
 for(i in my_list) {                              # Head of for-loop
@@ -329,7 +350,7 @@ print ("Program complete!")
 
 ```
 
-## Code for when you need to extract a value from a data file and add it to another one and so on
+#### Code for when you need to extract a value from a data file and add it to another one and so on
 ```{r}
 # Note we have i and j for each loop
 for (i in c(1, 2, 3, 4, 5)) {
@@ -342,21 +363,21 @@ for (i in c(1, 2, 3, 4, 5)) {
 
 ```
 
-## While loops: continue to loop while a condition remains true
-## Repeat loops: continue until you tell them to stop
-
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Purrr Looping
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#Purrr Functions 
-## map(): applies a function to each element of a list or vector and returns a list of the same length
-## map_dbl(): applies a function to each element of a list or vector and returns a double (numeric) vector
-## map_chr(): applies a function to each element of a list or vector and returns a character
-## map_df(): applies a function to each element of a list or vector and returns a data frame
+#### While loops: continue to loop while a condition remains true
+#### Repeat loops: continue until you tell them to stop
 
 
-## Standard for Loop to change values on list with sqrt function vs...
+## Purrr Looping
+
+
+### Purrr Functions 
+#### map(): applies a function to each element of a list or vector and returns a list of the same length
+#### map_dbl(): applies a function to each element of a list or vector and returns a double (numeric) vector
+#### map_chr(): applies a function to each element of a list or vector and returns a character
+#### map_df(): applies a function to each element of a list or vector and returns a data frame
+
+
+#### Standard for Loop to change values on list with sqrt function vs...
 ```{r}
 site_areas <- c(144, 400, 625)
 results <- numeric(length(site_areas)) # Must build an empty container first
@@ -367,7 +388,7 @@ for(i in seq_along(site_areas)) {
 results
 ```
 
-## ...purrr equivalent
+#### ...purrr equivalent
 ```{r}
 library(purrr)
 # Map directly and define your expected output type explicitly
@@ -375,7 +396,7 @@ mapped_results <- map_dbl(site_areas, sqrt)
 mapped_results
 ```
 
-## Combine purrr pipelines inside data frames to split analysis across separate groups
+#### Combine purrr pipelines inside data frames to split analysis across separate groups
 ```{r}
 # typical summary
 summary(iris) 
@@ -387,7 +408,7 @@ iris %>%
 
 ```
 
-## Using Chattr to compare methods when calculating means for fish count data
+#### Using Chattr to compare methods when calculating means for fish count data
 ```{r}
 fish_counts <- list(
   river_a = c(12, 15, 10, 18, 13),
@@ -407,14 +428,14 @@ mean_counts_purrr <- map_dbl(fish_counts, mean)
 print(mean_counts_purrr)
 ```
 
-------------------------------------------------------------------------------------------------------------------------------------------
-# Functions
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## Functions are useful for avoiding repeated code
 
-## Function consists of a Name, Arguments (the input variables), and a Body (the execution logic wrapped inside curly braces)
+## Functions
 
-##  Good practice to only use arguments passed directly into them, rather than accidentally grabbing random background objects in your global R environment
+#### Functions are useful for avoiding repeated code
+
+#### Function consists of a Name, Arguments (the input variables), and a Body (the execution logic wrapped inside curly braces)
+
+####  Good practice to only use arguments passed directly into them, rather than accidentally grabbing random background objects in your global R environment
 ```{r}
 # Define Function
 calculate_coral_mortality <- function(initial_count, surviving_count) {
@@ -431,9 +452,9 @@ calculate_coral_mortality <- function(initial_count, surviving_count) {
 # Test custom function
 calculate_coral_mortality(initial_count = 120, surviving_count = 84)
 ```
-## Other Examples include converting temperature units: temp_C <- (temp_F - 32) * 5 / 9
+#### Other Examples include converting temperature units: temp_C <- (temp_F - 32) * 5 / 9
 
-## Can use a function to do this for every value in a dataset
+#### Can use a function to do this for every value in a dataset
 ```{r}
 fahrenheit_to_celsius <- function(temp_F) {    # establish conversion as output of function operating on the arguments
    # convert F to C (good practice to always list what function does)
@@ -446,7 +467,7 @@ fahrenheit_to_celsius(100)
 fahrenheit_to_celsius(200)
 ```
 
-## Celsius to fahrenheit
+#### Celsius to fahrenheit
 ```{r}
 celsius_to_fahrenheit <- function(temp_C) {    
    # convert C to F
@@ -459,7 +480,7 @@ celsius_to_fahrenheit(20)
 celsius_to_fahrenheit(40)
 ```
 
-## Temp conversion w/ saftey stop for absolute zero
+#### Temp conversion w/ saftey stop for absolute zero
 ```{r}
 convert_temp_c_to_f <- function(temp_C) {
   if (temp_C < -273.15) {
@@ -473,7 +494,7 @@ convert_temp_c_to_f(25)
 #convert_temp_c_to_f(-300) # Triggers the safety check and stops execution with an error message
 ```
 
-## Advanced problems
+#### Advanced problems
 ```{r}
 # Create custom function named clean_and_classify_survey that accepts a data frame and a column name threshold parameter as inputs
 # Safely check if the specified column name exists within the passed data frame; if it does not, trigger a user-friendly error message using stop()

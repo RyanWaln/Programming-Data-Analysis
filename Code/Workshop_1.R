@@ -1,22 +1,29 @@
 ---
-  # MB5370: Introduction to Programming
+# MB5370: Introduction to Programming
 #title: "Workshop 1 Module 1"
 #author: "Ryan Waln"
 #date: "2026-05-20"
 #output: html_document
-#Workspace: D:/Tri 2 2026/Techniques in Marine Science 1/Programming & Data Analysis/Code/Basic_Code_M1W1.Rmd
 ---
- 
-#Always open R files from the project directory not file explorer
+  ## Introduction
   
-# download and install then comment out so it doesn't run again
+  # This file covers the absolute basics of R programming, such as syntax, functions, and types of data. 
+  
+  
+# Always open R files from the project directory not file explorer
+  
+  # Houskeeping
+rm(list=ls())
+objects()  
+  
+  # download and install then comment out so it doesn't run again
 
 #install.packages("tidyverse") 
 #install.packages("redlistr") 
 #install.packages("terra") 
 
 
-# load packages
+  # load packages
 
 #library("ggplot2")
 #library("tidyr")
@@ -24,13 +31,13 @@
 #library("tidyverse") 
 
 
-#Help options
+  #Help options
 
 #?round # go to help
 #args(round) # use args in the Console
 
 
-#Basics
+  # Basics
 2+1
 1:30
 6 * 2
@@ -43,7 +50,7 @@ y = 5
 x + y
 
 
-# Naming Errors
+  # Naming Errors
 
 #01_age <- 25 # starts with a number
 #!_age <- 25 # no special symbols
@@ -51,7 +58,7 @@ x + y
 `age bob` <- 25 # no spaces, but with back ticks
 
 
-#Functions 
+  # Functions 
 
 years_old <- 25.7
 round(years_old) # rounds up
@@ -60,7 +67,7 @@ years_old <- 25.765
 round (years_old, 2) # comma after the object to specify argument to 2 decimal places
 
 
-#Paste Function
+# Paste Function
 
 years_old <- 24
 Ryan <- paste("Ryan is", years_old)
@@ -78,7 +85,7 @@ print (total) # executed in the way it was defined
 
 
 
-# Debugging errors
+  # Debugging errors
 
 p <- 2
 z <- 5
@@ -89,7 +96,7 @@ print (out) # What is the value of out? Is it the same as expected?
 out <- p * z
 
 
-#Lacks commas between objects
+  # Lacks commas between objects
 #my_quiz <- c("uno",
 #             "dos",
 #             "tres",
@@ -99,7 +106,7 @@ out <- p * z
 #str(my_quiz)
 #len(my_quiz) #Len should be length
 
-#Fixed code
+  # Fixed code
 my_quiz <- c("uno",
              "dos",
              "tres",
@@ -110,12 +117,12 @@ str(my_quiz)
 length(my_quiz)
 
 
-#Testing if data is numeric or a character
+# Testing if data is numeric or a character
 x <- 1
 is.character(x)
 is.numeric (x)
 
-#Types of Data
+  # Types of Data
 
 #Vector
 y <- c(1, 2, 3)
@@ -124,22 +131,22 @@ z <- c("Sarah", "Tracy", "Jon")
 class(y) 
 class(z)
 
-#Lists (values inside can be of different types)
+# Lists (values inside can be of different types)
 x <- list(1, "a", TRUE)
 x
 x[[2]] #Retrieve 2nd value
 
-#Insted of importing .csv files you can make your own data frames by adding vectors and giving them column names
+# Insted of importing .csv files you can make your own data frames by adding vectors and giving them column names
 my_dataframe <-  data.frame (no = c(1,2,3), name = c("Tracey", "John", "Pete"), pass = c(TRUE, FALSE, TRUE))
 my_dataframe
 str(my_dataframe)
 
-#Set 1st column as categorical rather than numeric 
+# Set 1st column as categorical rather than numeric 
 my_dataframe$no = as.factor(my_dataframe$no)
 str (my_dataframe)
 
 
-#------------------------------------#
+
 #Class discussion. We want to take a .csv dataset representing counts from a BRUVs survey and turn it 
 #into a plot of the abundance of a single species. What major steps - the main tasks you would need to do using programming 
 #might be required to get from a structured .csv table to a plot of a single species? Record your #answers in your script using numbered comments. 
@@ -148,5 +155,5 @@ str (my_dataframe)
 # 1. Read the .csv dataset into R. etc.
 # 2. Sort the data as needed and define NA
 # 3. Plot the data selected with the plot function and edit abundance plot as desired
-#------------------------------------#
+
 

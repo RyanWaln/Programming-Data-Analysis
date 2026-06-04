@@ -6,36 +6,54 @@ date: "2026-05-21"
 output: html_document
 ---
 
-# Use gear sign to edit knitr outpouts
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+## Introduction
+
+This file covers basic plotting functions with ggplot2. Material covered includes:
+- Plotting by category by color, shape, etc. 
+- Plotting multiple geoms 
+- Plotting and highlighting subsets of data
+- Transforming data with stat_count() to determine best fit plot type 
+- Aesthetic adjustments 
+- Plot template at end
+
+```{r housekeeping, message=FALSE, warning=FALSE, include=FALSE}
+# R Setup & housekeeping
+knitr::opts_chunk$set(
+	echo = FALSE,
+	include = TRUE,
+	message = FALSE,
+	warning = FALSE)
+
+rm(list=ls())
+objects()
 ```
 
-# Shortcuts
+#### Shortcuts
 Ctrl + Alt + I #creates new chunks
 Ctrl + Enter #to run selected line
 Ctrl + Shift + Enter #to run whole chunk
+ 
+when kniting: more # = smaller text on printed documents
 
 ```{r install packages}
-#install.packages("tidyverse") 
-#install.packages("knitr")
+# install.packages("tidyverse") 
+# install.packages("knitr")
 ```
 
 ```{r remove packages}
-#remove.packages()
+# remove.packages()
 ```
 
 ```{r library}
 library("tidyverse") 
 library("knitr") 
-#when kniting: more # = smaller text on printed documents
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Plotting
------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Create plot with mpg dataset from tidyverse (can use cursor and tab to select x & y varriables)
+## Plotting
+
+
+#### Create plot with mpg dataset from tidyverse (can use cursor and tab to select x & y varriables)
 ```{r}
 mpg
 ggplot(data = mpg) + 
@@ -44,53 +62,54 @@ ggplot(data = mpg) +
 #geom_points creates scatter plot, aes() is used to select x and y variables
 ```
 
-## Plot template using ggplot()
+#### Plot template using ggplot()
 ```{r ggplot template}
 #ggplot(data = <DATA>) + 
 #  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>)
 ```
 
-## Set car class to be displayed by color using aes()
+#### Set car class to be displayed by color using aes()
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, colour = class))
 
 ```
 
-## Set car class to be displayed by size of point (not good data visualization)
+#### Set car class to be displayed by size of point (not good data visualization)
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, size = class))
 
 ```
 
-## Set car class to be displayed by different transparency
+#### Set car class to be displayed by different transparency
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
 
 ```
 
-## Set car class to be displayed by different shapes (not recomended when > 6 categories)
+#### Set car class to be displayed by different shapes (not recomended when > 6 categories)
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, shape = class))
 
 ```
 
-## Turn all points blue 
+#### Turn all points blue 
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 
 ```
-## Color code engine sizes > than 5 
+
+#### Color code engine sizes > than 5 
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy, colour = displ < 5))
 ```
 
-## Error reminder: the + must be on top line
+#### Error reminder: the + must be on top line
 ```{r}
 ggplot(data = mpg) 
 + geom_point(mapping = aes(x = displ, y = hwy)) 
@@ -98,21 +117,21 @@ ggplot(data = mpg)
 
 ```
 
-## Creating sub plots/pannels. Divide by class and set 2 rows with facet_wrap()
+#### Creating sub plots/pannels. Divide by class and set 2 rows with facet_wrap()
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_wrap(~ class, nrow = 2) #~ for object, nrow for no. of rows
 ```
 
-## Use facet_grid() to split up plots by multiple variables (separate variables w/ ~)
+#### Use facet_grid() to split up plots by multiple variables (separate variables w/ ~)
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) + 
   facet_grid(drv ~ cyl)
 ```
 
-## Use . if you don't want to include the rows or columns section
+#### Use . if you don't want to include the rows or columns section
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))+ 
@@ -120,13 +139,13 @@ facet_grid(. ~ cyl)
 
 ```
 
-## Plot data as smooth line w/ geom_smooth()
+#### Plot data as smooth line w/ geom_smooth()
 ```{r}
 ggplot(data = mpg) + 
   geom_smooth(mapping = aes(x = displ, y = hwy))
 ```
 
-## Can comment out plots that don't display data well to keep track
+#### Can comment out plots that don't display data well to keep track
 ```{r}
 ggplot(data = mpg) + 
   #geom_point(mapping = aes(x = displ, y = hwy)) # points horrible 
@@ -134,20 +153,20 @@ ggplot(data = mpg) +
 
 ```
 
-## Can generate mutiple lines for different categories with linetype = <insert>
+#### Can generate mutiple lines for different categories with linetype = <insert>
 ```{r}
 ggplot(data = mpg) + 
   geom_smooth(mapping = aes(x = displ, y = hwy, linetype = drv))
 
 ```
 
-## Use group = <insert> to sort data by a category
+#### Use group = <insert> to sort data by a category
 ```{r}
  ggplot(data = mpg) +
   geom_smooth(mapping = aes(x = displ, y = hwy, group = drv))
 ```
 
-## Change color of each line based on drv and exclude legend
+#### Change color of each line based on drv and exclude legend
 ```{r}
 ggplot(data = mpg) +
   geom_smooth(
@@ -158,21 +177,21 @@ ggplot(data = mpg) +
 
 ```
 
-## Plot data as sacterplot and smooth line graph on top of each other (would have to change x variable in both locations to edit)
+#### Plot data as sacterplot and smooth line graph on top of each other (would have to change x variable in both locations to edit)
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy)) +
   geom_smooth(mapping = aes(x = displ, y = hwy))
 ```
 
-## More efficent way to plot above set if you want to change x & y varriables
+#### More efficent way to plot above set if you want to change x & y varriables
 ```{r}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point() + 
   geom_smooth()
 ```
 
-## Plots are the same just different methods
+#### Plots are the same just different methods
 ```{r}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point() + 
@@ -184,7 +203,7 @@ ggplot() +
 
 ```
 
-## Can edit one geom to separate things by color
+#### Can edit one geom to separate things by color
 ```{r}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point(mapping = aes(color = class)) + 
@@ -192,37 +211,35 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 
 ```
 
-## Plot a subset of the data with one geom (only subcompact vehicles)
+#### Plot a subset of the data with one geom (only subcompact vehicles)
 ```{r}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point(mapping = aes(color = class)) + 
   geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
 ```
 
-## Change geom_(line, histogram, box, bar) to get the desired chart type
+#### Change geom_(line, histogram, box, bar) to get the desired chart type
 ```{r}
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_line()
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Transforming Data (diamonds dataset)
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Transforming Data (diamonds dataset)
 
-## Bar chart shows most have high quality cuts
+#### Bar chart shows most have high quality cuts
 ```{r}
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut))
 ```
 
-## stat_count() can be used instead of geom (automatically does stats and best fit plot)
+#### stat_count() can be used instead of geom (automatically does stats and best fit plot)
 ```{r}
 ggplot(data = diamonds) + 
   stat_count(mapping = aes(x = cut))
 
 ```
 
-## Change count (a summary) to identify which uses raw values. (Required for when you want to change defaults ) 
+#### Change count (a summary) to identify which uses raw values. (Required for when you want to change defaults ) 
 ```{r}
 demo <- tribble(
   ~cut,         ~freq,
@@ -239,12 +256,9 @@ ggplot(data = demo) +
 
 ```
 
+## Aethstetic Adjustments
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Aethstetic Adjustments
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-## fill =  can add differential colors to bar chart on diamond cut or used to map proportion of cuts with certian clarity
+#### fill =  can add differential colors to bar chart on diamond cut or used to map proportion of cuts with certian clarity
 ```{r}
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut, fill = cut))
@@ -254,9 +268,9 @@ ggplot(data = diamonds) +
 
 ```
 
-## Position Addjustments: identity (raw data), fill (changes heights), and dodge (forces ggplot2 to not put things on top of each other)
+#### Position Addjustments: identity (raw data), fill (changes heights), and dodge (forces ggplot2 to not put things on top of each other)
 
-## To alter transparency (alpha)
+#### To alter transparency (alpha)
 ```{r}
 ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) + 
   geom_bar(alpha = 1/5, position = "identity")   #Identity uses raw data points instead
@@ -265,15 +279,15 @@ ggplot(data = diamonds, mapping = aes(x = cut, fill = clarity)) +
   geom_bar(alpha = 3/5, position = "identity")
 ```
 
-## To color the bar outlines with no fill color (never use)
+#### To color the bar outlines with no fill color (never use)
 ```{r}
 ggplot(data = diamonds, mapping = aes(x = cut, colour = clarity)) + 
   geom_bar(fill = NA, position = "identity")
 
 ```
 
-## To make bars the same height to look at proportions in a group use: position = "fill"
-## Can do something similar with position = "doge" to place objects besides each other (pop-size structure)
+#### To make bars the same height to look at proportions in a group use: position = "fill"
+#### Can do something similar with position = "doge" to place objects besides each other (pop-size structure)
 ```{r}
 ggplot(data = diamonds) + 
   geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
@@ -282,15 +296,15 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
 ```
 
-## position = "jitter" adds a small amount of random noise to each point lessen points overlap. This is useful for scatterplots but not barplots.
+#### position = "jitter" adds a small amount of random noise to each point lessen points overlap. This is useful for scatterplots but not barplots.
 ```{r}
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 # PLOT TEMPLATE (fill in <>)
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ```{r}
 #ggplot(data = <DATA>) + 
 #  <GEOM_FUNCTION>(
