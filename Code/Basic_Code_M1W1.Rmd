@@ -12,7 +12,7 @@ This file covers the absolute basics of R programming, such as syntax, functions
 ```{r housekeeping, message=FALSE, warning=FALSE, include=FALSE}
 # R Setup & housekeeping
 knitr::opts_chunk$set(
-	echo = FALSE,
+	echo = TRUE,
 	include = TRUE,
 	message = FALSE,
 	warning = FALSE)
@@ -24,7 +24,7 @@ objects()
 
 #### download and install then comment out so it doesn't run again
 ```{r}
-install.packages("tidyverse") 
+#install.packages("tidyverse") 
 #install.packages("redlistr") 
 #install.packages("terra") 
 ```
@@ -97,7 +97,7 @@ p <- 2
 z <- 5
 out <- p * z  # What should the value of out be?
 print (out) # What is the value of out? Is it the same as expected?
-out <- p * a # undefined variable.
+#out <- p * a # undefined variable.
 ## > Error: object 'a' not found
 out <- p * z
 ```

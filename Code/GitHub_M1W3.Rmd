@@ -9,10 +9,10 @@ output: html_document
 
 This file covers how to set up, enable, and troubleshoot Github
 
-```{r housekeeping, message=FALSE, warning=FALSE, include=FALSE}
+```{r housekeeping, message=FALSE, warning=FALSE, include=FALSE, error = TRUE}
 # R Setup & housekeeping
 knitr::opts_chunk$set(
-	echo = FALSE,
+	echo = TRUE,
 	include = TRUE,
 	message = FALSE,
 	warning = FALSE)
@@ -37,7 +37,7 @@ library(usethis)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Github setup (run in console)
-```{r}
+```{r, error = TRUE}
 # Get git credentials
 credentials::git_credential_ask()  
 
@@ -57,7 +57,7 @@ usethis::edit_git_config()
 	directory = E:/*
 	directory = D:/*
 
-```{r}
+```{r, error = TRUE}
 # Then restart R and run 
 usethis::git_sitrep() 
 
@@ -79,7 +79,7 @@ gitcreds::gitcreds_set()
 ## Workflow for github:
 ### Edit → Save → Stage → Commit → Pull → Push
 
-```{r}
+```{r, error = TRUE}
 #track current project locally (can also use Tools > Project Options … > Git/SVN, and set to Git)
 usethis::use_git() 
 
@@ -90,7 +90,7 @@ usethis::use_github()
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
 # Execute other r script such as workshop 1 R script (doesn't work with R markdown files)
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------
-```{r}
+```{r, error = TRUE}
 source("../Code/Workshop_1.R")
 ```
 

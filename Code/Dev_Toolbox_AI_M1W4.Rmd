@@ -18,7 +18,7 @@ This file covers:
 ```{r housekeeping, message=FALSE, warning=FALSE, include=FALSE}
 # R Setup & housekeeping
 knitr::opts_chunk$set(
-	echo = FALSE,
+	echo = TRUE,
 	include = TRUE,
 	message = FALSE,
 	warning = FALSE)
@@ -81,17 +81,17 @@ ggplot(penguins, aes(x = island, y = flipper_length_mm, color = species)) +
 
 #### Link chattr AI to Google Gemini LLM
 ```{r}
-##run in console
-usethis::edit_r_environ()
-##Enter into new window
-GEMINI_API_KEY=your_actual_key_here
-##Restart R session for changes to take effect
+## run in console
+# usethis::edit_r_environ()
+## Enter into new window
+# GEMINI_API_KEY=your_actual_key_here
+## Restart R session for changes to take effect
 
-##Ensure R uses prefered model each session
+## Ensure R uses prefered model each session
 usethis::edit_r_profile()
-##Enter into new window
+## Enter into new window
 options(.chattr_chat = ellmer::chat_google_gemini())
-##Restart R session for changes to take effect
+## Restart R session for changes to take effect
 ```
 
 #### Check API Key is Recognized
@@ -106,7 +106,8 @@ library("ellmer")
 library(ggplot2)
 my_chat <- ellmer::chat_google_gemini(model = "gemini-2.5-flash")
 chattr_use(my_chat)
-chattr::chattr("say hello")Hello!
+chattr::chattr("say hello")
+  
 ```
 
 ## Start a Chat

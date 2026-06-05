@@ -19,7 +19,7 @@ This file covers basic plotting functions with ggplot2. Material covered include
 ```{r housekeeping, message=FALSE, warning=FALSE, include=FALSE}
 # R Setup & housekeeping
 knitr::opts_chunk$set(
-	echo = FALSE,
+	echo = TRUE,
 	include = TRUE,
 	message = FALSE,
 	warning = FALSE)
@@ -110,11 +110,9 @@ ggplot(data = mpg) +
 ```
 
 #### Error reminder: the + must be on top line
-```{r}
+```{r, error = TRUE}
 ggplot(data = mpg) 
 + geom_point(mapping = aes(x = displ, y = hwy)) 
-
-
 ```
 
 #### Creating sub plots/pannels. Divide by class and set 2 rows with facet_wrap()
