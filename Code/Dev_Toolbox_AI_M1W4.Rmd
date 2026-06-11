@@ -201,7 +201,7 @@ if (sst > 29.5) {
 } else {
   print("SST remains within baseline parameters.")
 }
-
+# Useful to set up warnings or alternate pathways such as by running base R script in code
 ```
 
 ### if_else()
@@ -220,8 +220,11 @@ coral_monitoring <- coral_monitoring %>%
 coral_monitoring
 
 
-## %>%: used to chain functions together (passes the result of the expression on its left as the first argument to the function on its right)
-## Mutate: used to edit columns in a data frame
+# %>%: used to chain functions together (passes the result of the expression on its left as the first argument to the function on its right)
+
+# Mutate: used to edit columns in a data frame
+
+# Can use these extensively when wrangling data
 ```
 
 

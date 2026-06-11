@@ -29,9 +29,9 @@ objects()
 ```
 
 #### Shortcuts
-Ctrl + Alt + I #creates new chunks
-Ctrl + Enter #to run selected line
-Ctrl + Shift + Enter #to run whole chunk
+To create new chunk: Ctrl + Alt + I 
+To run selected line: Ctrl + Enter
+To run whole chunk: Ctrl + Shift + Enter: 
  
 when kniting: more # = smaller text on printed documents
 
@@ -41,6 +41,7 @@ when kniting: more # = smaller text on printed documents
 ```
 
 ```{r remove packages, message=FALSE, warning=FALSE, include=FALSE}
+## Can also remove packages in packages tab
 # remove.packages()
 ```
 
