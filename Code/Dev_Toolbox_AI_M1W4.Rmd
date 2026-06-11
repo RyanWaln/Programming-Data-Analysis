@@ -32,7 +32,7 @@ objects()
 #### Set up GitCopilot in Tools > Global Options > Assistant
 
 #### Install chattr AI and other packages
-```{r}
+```{r, message=FALSE, warning=FALSE, include=FALSE}
 #install.packages("ellmer")
 #install.packages("chattr")
 #install.packages("palmerpenguins")
@@ -64,6 +64,7 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, color = species)) +
        color = "Species")
 
 ```
+
 ```{r}
 # Create boxplot using penguins dataset 
 # Plot flipper_length_mm across different islands
@@ -80,7 +81,7 @@ ggplot(penguins, aes(x = island, y = flipper_length_mm, color = species)) +
 ```
 
 #### Link chattr AI to Google Gemini LLM
-```{r}
+```{r, error = TRUE}
 ## run in console
 # usethis::edit_r_environ()
 ## Enter into new window
@@ -100,7 +101,7 @@ Sys.getenv("GEMINI_API_KEY")
 ```
 
 ## Set up chat
-```{r}
+```{r, error=TRUE}
 library("chattr")
 library("ellmer")
 library(ggplot2)
@@ -111,7 +112,7 @@ chattr::chattr("say hello")
 ```
 
 ## Start a Chat
-```{r}
+```{r, error = TRUE}
 chattr_app()
 #Execute Key shortcut: Ctrl + Alt + c
 ```
@@ -128,7 +129,7 @@ ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +
 ## Sorting Data
 
 
-### ifthen statments:if a condition is meet, do this command.
+### if_then statments: if a condition is meet, do this command.
 
 #### Change object if it equates to something
 ```{r}
@@ -147,7 +148,7 @@ if (x == 1) {
 x # what is x now?
 ```
 
-### ifelse staments: used to sort data, such as if a conditon is not met start a second set of commands.
+### if_else staments: used to sort data, such as if a conditon is not met start a second set of commands.
 
 #### Example:
 if (animal_data_received) {
@@ -157,9 +158,9 @@ if (animal_data_received) {
 }
 
 
-### elseif statements: allows additional conditional commands between the if and else
+### else_if statements: allows additional conditional commands between the if and else
 
-#### Example of ifelse code:
+#### Example of if_else code:
 ```{r}
 name <- "Nick"
 if (name == "Nick"){

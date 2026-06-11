@@ -21,7 +21,7 @@ rm(list=ls())
 objects()
 ```
 
-```{r install packages}
+```{r install packages, message=FALSE, warning=FALSE, include=FALSE}
 # install.packages("tidyverse") 
 # install.packages("knitr")
 # install.packages("usethis")
@@ -32,11 +32,10 @@ library("tidyverse")
 library("knitr")
 library(usethis)
 ```
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Github
------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Github setup (run in console)
+## Github
+
+#### Github setup (run in console)
 ```{r, error = TRUE}
 # Get git credentials
 credentials::git_credential_ask()  
@@ -77,7 +76,7 @@ gitcreds::gitcreds_set()
 ```
 
 ## Workflow for github:
-### Edit → Save → Stage → Commit → Pull → Push
+#### Edit → Save → Stage → Commit → Pull → Push
 
 ```{r, error = TRUE}
 #track current project locally (can also use Tools > Project Options … > Git/SVN, and set to Git)
@@ -87,9 +86,8 @@ usethis::use_git()
 usethis::use_github() 
 ```
 
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Execute other r script such as workshop 1 R script (doesn't work with R markdown files)
------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## Execute other r script such as workshop 1 R script (doesn't work with R markdown files)
+
 ```{r, error = TRUE}
 source("../Code/Workshop_1.R")
 ```

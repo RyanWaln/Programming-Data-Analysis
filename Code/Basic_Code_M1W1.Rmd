@@ -23,7 +23,7 @@ objects()
 
 
 #### download and install then comment out so it doesn't run again
-```{r}
+```{r, message=FALSE, warning=FALSE, include=FALSE}
 #install.packages("tidyverse") 
 #install.packages("redlistr") 
 #install.packages("terra") 
@@ -37,8 +37,10 @@ library("tidyr")
 library("tidyverse") 
 ```
 
-## Help options
-```{r}
+
+```{r, message=FALSE, warning=FALSE, include=FALSE}
+# Help options
+
 ?round # go to help
 args(round) # use args in the Console
 ```

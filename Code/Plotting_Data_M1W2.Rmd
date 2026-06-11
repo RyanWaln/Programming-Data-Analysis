@@ -35,12 +35,12 @@ Ctrl + Shift + Enter #to run whole chunk
  
 when kniting: more # = smaller text on printed documents
 
-```{r install packages}
+```{r install packages, message=FALSE, warning=FALSE, include=FALSE}
 # install.packages("tidyverse") 
 # install.packages("knitr")
 ```
 
-```{r remove packages}
+```{r remove packages, message=FALSE, warning=FALSE, include=FALSE}
 # remove.packages()
 ```
 
